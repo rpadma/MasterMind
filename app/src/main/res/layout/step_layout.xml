@@ -4,65 +4,74 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/box">
+    android:layout_margin="8dp">
+    <ImageView
+        android:id="@+id/control"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/btnStep1"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@drawable/box"
         android:src="@drawable/ic_circle_grey"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/control"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".2" />
+        app:layout_constraintWidth_percent=".15" />
 
     <ImageView
         android:id="@+id/btnStep2"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@drawable/box"
         android:src="@drawable/ic_circle_grey"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnStep1"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".2" />
+        app:layout_constraintWidth_percent=".15" />
 
     <ImageView
         android:id="@+id/btnStep3"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@drawable/box"
         android:src="@drawable/ic_circle_grey"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnStep2"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".2" />
+        app:layout_constraintWidth_percent=".15" />
 
     <ImageView
         android:id="@+id/btnStep4"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@drawable/box"
         android:src="@drawable/ic_circle_grey"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnStep3"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".2" />
+        app:layout_constraintWidth_percent=".15" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:background="@drawable/box"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnStep4"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".2">
+        app:layout_constraintWidth_percent=".16">
 
         <ImageView
             android:id="@+id/clue1"
