@@ -3,7 +3,6 @@ package com.mandb.rohitpadma.mastermind.adapter;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.mandb.rohitpadma.mastermind.MasterMindModel;
 import com.mandb.rohitpadma.mastermind.R;
 
 import androidx.annotation.NonNull;
@@ -30,9 +29,5 @@ public class MasterMindViewHolder extends RecyclerView.ViewHolder {
         clue2 = itemView.findViewById(R.id.clue2);
         clue3 = itemView.findViewById(R.id.clue3);
         clue4 = itemView.findViewById(R.id.clue4);
-    }
-
-    public void bind(MasterMindModel masterMindModel){
-
     }
 }

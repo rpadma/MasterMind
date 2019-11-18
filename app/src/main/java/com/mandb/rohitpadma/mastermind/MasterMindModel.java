@@ -10,6 +10,15 @@ public class MasterMindModel {
     int clue_two;
     int clue_three;
     int clue_four;
+    boolean isEnable = false;
+
+    public boolean isEnable() {
+        return isEnable;
+    }
+
+    public void setEnable(boolean enable) {
+        isEnable = enable;
+    }
 
     public int getInput_one() {
         return input_one;
