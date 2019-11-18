@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RecyclerView recyclerView;
     MasterMindAdapter masterMindAdapter;
     ImageView btnRed, btnYellow, btnBlack, btnGreen, btnOrange, btnBlue;
-
+    ArrayList<MasterMindModel> masterMindModels=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +40,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void bindData(){
-        ArrayList<MasterMindModel> masterMindModels=new ArrayList<>();
+
         for(int i=0;i<8;i++){
-            masterMindModels.add(new MasterMindModel());
+            masterMindModels.add(new MasterMindModel(R.drawable.ic_circle_grey,
+                    R.drawable.ic_circle_grey,
+                    R.drawable.ic_circle_grey,R.drawable.ic_circle_grey));
         }
         masterMindModels.get(0).setEnable(true);
         masterMindAdapter = new MasterMindAdapter(masterMindModels,this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, true));
+        masterMindAdapter.notifyDataSetChanged();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,
+                RecyclerView.VERTICAL, true));
         recyclerView.setAdapter(masterMindAdapter);
-        recyclerView.setLayoutFrozen(true);
     }
 
 
@@ -85,5 +88,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             break;
         }
+    }
+
+    public void updateItemView(int position,
+                               MasterMindModel prevModel,
+                               MasterMindModel currentModel){
+        masterMindModels.set(position,prevModel);
+        masterMindModels.set(position+1,currentModel);
+        masterMindAdapter.notifyDataSetChanged();
     }
 }

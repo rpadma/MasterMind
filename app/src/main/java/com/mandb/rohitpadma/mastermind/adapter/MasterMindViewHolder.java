@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.mandb.rohitpadma.mastermind.R;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MasterMindViewHolder extends RecyclerView.ViewHolder {
@@ -18,6 +19,8 @@ public class MasterMindViewHolder extends RecyclerView.ViewHolder {
     ImageView clue2;
     ImageView clue3;
     ImageView clue4;
+    ImageView control;
+    ConstraintLayout stepLayout;
 
     public MasterMindViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -29,5 +32,7 @@ public class MasterMindViewHolder extends RecyclerView.ViewHolder {
         clue2 = itemView.findViewById(R.id.clue2);
         clue3 = itemView.findViewById(R.id.clue3);
         clue4 = itemView.findViewById(R.id.clue4);
+        control = itemView.findViewById(R.id.control);
+        stepLayout = itemView.findViewById(R.id.stepLayout);
     }
 }

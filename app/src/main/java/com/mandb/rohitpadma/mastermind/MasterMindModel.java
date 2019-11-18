@@ -12,6 +12,16 @@ public class MasterMindModel {
     int clue_four;
     boolean isEnable = false;
 
+    public MasterMindModel() {
+    }
+
+    public MasterMindModel(int input_one, int input_two, int input_three, int input_four) {
+        this.input_one = input_one;
+        this.input_two = input_two;
+        this.input_three = input_three;
+        this.input_four = input_four;
+    }
+
     public boolean isEnable() {
         return isEnable;
     }
