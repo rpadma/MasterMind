@@ -7,11 +7,11 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/btnBlack"
+        android:id="@+id/btnPurple"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/box"
-        android:src="@drawable/ic_circle_black"
+        android:src="@drawable/ic_circle_purple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_default="percent"
@@ -24,7 +24,7 @@
         android:background="@drawable/box"
         android:src="@drawable/ic_circle_orange"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnBlack"
+        app:layout_constraintStart_toEndOf="@id/btnPurple"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent=".166"/>
 
@@ -62,11 +62,11 @@
         app:layout_constraintWidth_percent=".166"/>
 
     <ImageView
-        android:id="@+id/btnRed"
+        android:id="@+id/btnPink"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/box"
-        android:src="@drawable/ic_circle_red"
+        android:src="@drawable/ic_circle_pink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnGreen"
         app:layout_constraintWidth_default="percent"

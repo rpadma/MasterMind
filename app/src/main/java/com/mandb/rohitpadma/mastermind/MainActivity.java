@@ -1,5 +1,6 @@
 package com.mandb.rohitpadma.mastermind;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     RecyclerView recyclerView;
     MasterMindAdapter masterMindAdapter;
-    ImageView btnRed, btnYellow, btnBlack, btnGreen, btnOrange, btnBlue;
+    ImageView btnPink, btnYellow, btnPurple, btnGreen, btnOrange, btnBlue;
     ArrayList<MasterMindModel> masterMindModels=new ArrayList<>();
     ArrayList<Integer> colorPositions = new ArrayList<>();
 
@@ -29,20 +31,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        btnRed = (ImageView) findViewById(R.id.btnRed);
+        btnPink = (ImageView) findViewById(R.id.btnPink);
         btnYellow = (ImageView) findViewById(R.id.btnYellow);
         btnOrange = (ImageView) findViewById(R.id.btnOrange);
         btnGreen = (ImageView) findViewById(R.id.btnGreen);
         btnBlue = (ImageView) findViewById(R.id.btnBlue);
-        btnBlack = (ImageView) findViewById(R.id.btnBlack);
+        btnPurple = (ImageView) findViewById(R.id.btnPurple);
 
-        btnBlack.setOnClickListener(this);
-        btnRed.setOnClickListener(this);
+        btnPurple.setOnClickListener(this);
+        btnPink.setOnClickListener(this);
         btnYellow.setOnClickListener(this);
         btnGreen.setOnClickListener(this);
         btnBlue.setOnClickListener(this);
         btnOrange.setOnClickListener(this);
         bindData();
+        colorPositions = generateRandomColors();
     }
 
     public void bindData(){
@@ -69,16 +72,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnBlack: {
-                masterMindAdapter.setColorBasedOnPosition(R.drawable.ic_circle_black);
+            case R.id.btnPurple: {
+                masterMindAdapter.setColorBasedOnPosition(R.drawable.ic_circle_purple);
             }
             break;
             case R.id.btnBlue: {
                 masterMindAdapter.setColorBasedOnPosition(R.drawable.ic_circle_blue);
             }
             break;
-            case R.id.btnRed: {
-                masterMindAdapter.setColorBasedOnPosition(R.drawable.ic_circle_red);
+            case R.id.btnPink: {
+                masterMindAdapter.setColorBasedOnPosition(R.drawable.ic_circle_pink);
             }
             break;
             case R.id.btnOrange: {
@@ -105,6 +108,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             masterMindModels.set(position + 1, currentModel);
             masterMindAdapter.notifyDataSetChanged();
         } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("You Won!");
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    clearListView();
+                    bindData();
+                    colorPositions = generateRandomColors();
+                    dialog.dismiss();
+                }
+            });
+
+            builder.create().show();
             Log.d("colorCode", "You WON");
         }
     }
@@ -112,14 +128,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public int getResourceBasedOnRandomNumber(int number) {
         switch (number) {
             case 0:
-                Log.d("colorCode", "black");
-                return R.drawable.ic_circle_black;
+                Log.d("colorCode", "purple");
+                return R.drawable.ic_circle_purple;
             case 1:
                 Log.d("colorCode", "blue");
                 return R.drawable.ic_circle_blue;
             case 2:
-                Log.d("colorCode", "red");
-                return R.drawable.ic_circle_red;
+                Log.d("colorCode", "Pink");
+                return R.drawable.ic_circle_pink;
             case 3:
                 Log.d("colorCode", "orange");
                 return R.drawable.ic_circle_orange;
@@ -183,5 +199,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void generateRandom(View v) {
         colorPositions = generateRandomColors();
+    }
+
+    public void clearListView(){
+        masterMindModels.clear();
+        colorPositions.clear();
+        masterMindAdapter.notifyDataSetChanged();
     }
 }
