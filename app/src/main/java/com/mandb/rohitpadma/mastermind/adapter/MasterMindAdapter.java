@@ -38,15 +38,15 @@ public class MasterMindAdapter extends RecyclerView.Adapter<MasterMindViewHolder
     @Override
     public void onBindViewHolder(@NonNull final MasterMindViewHolder holder, final int position) {
         MasterMindModel masterMindModel=masterMindModels.get(position);
+        holder.setIsRecyclable(false);
         holder.step1.setImageResource(masterMindModel.getInput_one());
         holder.step2.setImageResource(masterMindModel.getInput_two());
         holder.step3.setImageResource(masterMindModel.getInput_three());
         holder.step4.setImageResource(masterMindModel.getInput_four());
+        holder.bindClueColors(masterMindModel);
+
         if (masterMindModel.isEnable()) {
             holder.control.setVisibility(View.VISIBLE);
-            holder.stepLayout.setClickable(true);
-
-
             holder.step1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -92,24 +92,24 @@ public class MasterMindAdapter extends RecyclerView.Adapter<MasterMindViewHolder
                 }
             });
 
+            holder.control.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (selectedView != null) {
+                        selectedView.setBackground(context.getDrawable(R.drawable.box));
+                    }
+                    if(position+1<getItemCount()){
 
+                        MasterMindModel prevModel = masterMindModels.get(position);
+                        MasterMindModel currModel = masterMindModels.get(position+1);
+                        prevModel.setEnable(false);
+                        currModel.setEnable(true);
+                        ((MainActivity)context).updateItemView(position,prevModel,currModel);
+                        selectedPosition=position+1;
+                    }
+                }
+            });
         }
-        holder.control.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedView != null) {
-                    selectedView.setBackground(context.getDrawable(R.drawable.box));
-                }
-                if(position+1<8){
-                    MasterMindModel prevModel = masterMindModels.get(position);
-                    MasterMindModel currModel = masterMindModels.get(position+1);
-                    prevModel.setEnable(false);
-                    currModel.setEnable(true);
-                    ((MainActivity)context).updateItemView(position,prevModel,currModel);
-                    selectedPosition=selectedPosition+1;
-                }
-            }
-        });
     }
 
     @Override

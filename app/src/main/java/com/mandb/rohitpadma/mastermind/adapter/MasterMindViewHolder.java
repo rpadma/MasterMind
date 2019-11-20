@@ -3,7 +3,10 @@ package com.mandb.rohitpadma.mastermind.adapter;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.mandb.rohitpadma.mastermind.MasterMindModel;
 import com.mandb.rohitpadma.mastermind.R;
+
+import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -21,6 +24,7 @@ public class MasterMindViewHolder extends RecyclerView.ViewHolder {
     ImageView clue4;
     ImageView control;
     ConstraintLayout stepLayout;
+    ArrayList<ImageView> imageViews = new ArrayList<>();
 
     public MasterMindViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -34,5 +38,17 @@ public class MasterMindViewHolder extends RecyclerView.ViewHolder {
         clue4 = itemView.findViewById(R.id.clue4);
         control = itemView.findViewById(R.id.control);
         stepLayout = itemView.findViewById(R.id.stepLayout);
+        imageViews.add(clue1);
+        imageViews.add(clue2);
+        imageViews.add(clue3);
+        imageViews.add(clue4);
+    }
+
+    public void bindClueColors(MasterMindModel masterMindModel){
+        if(masterMindModel.getClue_colors()!=null && masterMindModel.getClue_colors().size()>0){
+            for(int i=0;i<masterMindModel.getClue_colors().size();i++){
+                imageViews.get(i).setImageResource(masterMindModel.getClue_colors().get(i));
+            }
+        }
     }
 }

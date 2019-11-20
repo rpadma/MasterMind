@@ -1,12 +1,16 @@
 package com.mandb.rohitpadma.mastermind;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.mandb.rohitpadma.mastermind.adapter.MasterMindAdapter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     MasterMindAdapter masterMindAdapter;
     ImageView btnRed, btnYellow, btnBlack, btnGreen, btnOrange, btnBlue;
     ArrayList<MasterMindModel> masterMindModels=new ArrayList<>();
+    ArrayList<Integer> colorPositions = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,8 +99,89 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void updateItemView(int position,
                                MasterMindModel prevModel,
                                MasterMindModel currentModel){
-        masterMindModels.set(position,prevModel);
-        masterMindModels.set(position+1,currentModel);
-        masterMindAdapter.notifyDataSetChanged();
+        prevModel = verifyPosition(prevModel);
+        if (!prevModel.isWon) {
+            masterMindModels.set(position, prevModel);
+            masterMindModels.set(position + 1, currentModel);
+            masterMindAdapter.notifyDataSetChanged();
+        } else {
+            Log.d("colorCode", "You WON");
+        }
+    }
+
+    public int getResourceBasedOnRandomNumber(int number) {
+        switch (number) {
+            case 0:
+                Log.d("colorCode", "black");
+                return R.drawable.ic_circle_black;
+            case 1:
+                Log.d("colorCode", "blue");
+                return R.drawable.ic_circle_blue;
+            case 2:
+                Log.d("colorCode", "red");
+                return R.drawable.ic_circle_red;
+            case 3:
+                Log.d("colorCode", "orange");
+                return R.drawable.ic_circle_orange;
+            case 4:
+                Log.d("colorCode", "yellow");
+                return R.drawable.ic_circle_yellow;
+            case 5:
+                Log.d("colorCode", "green");
+                return R.drawable.ic_circle_green;
+        }
+        return 0;
+    }
+
+    public ArrayList<Integer> generateRandomColors() {
+        HashSet<Integer> colorPositions = new HashSet<>();
+        while (colorPositions.size() < 4) {
+            Random rand = new Random();
+            int x = rand.nextInt(5);
+            colorPositions.add(x);
+        }
+
+        ArrayList<Integer> result = new ArrayList<>();
+        Iterator it = colorPositions.iterator();
+        while (it.hasNext()) {
+            result.add(getResourceBasedOnRandomNumber((int) it.next()));
+        }
+        return result;
+    }
+
+    public MasterMindModel verifyPosition(MasterMindModel prevModel) {
+        int redFlag = 0;
+        int blackFlag = 0;
+        ArrayList<Integer> position = new ArrayList<>();
+        position.add(prevModel.input_one);
+        position.add(prevModel.input_two);
+        position.add(prevModel.input_three);
+        position.add(prevModel.input_four);
+
+        ArrayList<Integer> clue_colors = new ArrayList<>();
+
+        for (int j = 0; j < position.size(); j++) {
+            for (int i = 0; i < colorPositions.size(); i++) {
+                if ((colorPositions.get(i) - position.get(j) == 0) && i == j) {
+                    clue_colors.add(R.drawable.ic_circle_black);
+                    blackFlag++;
+                    break;
+                }
+                if (colorPositions.get(i) - position.get(j) == 0) {
+                    clue_colors.add(R.drawable.ic_circle_red);
+                    redFlag++;
+                    break;
+                }
+            }
+        }
+        if (blackFlag == 4) {
+            prevModel.setWon(true);
+        }
+        prevModel.setClue_colors(clue_colors);
+        return prevModel;
+    }
+
+    public void generateRandom(View v) {
+        colorPositions = generateRandomColors();
     }
 }
