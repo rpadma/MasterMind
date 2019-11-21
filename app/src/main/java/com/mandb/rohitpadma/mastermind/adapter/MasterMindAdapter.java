@@ -95,17 +95,22 @@ public class MasterMindAdapter extends RecyclerView.Adapter<MasterMindViewHolder
             holder.control.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (selectedView != null) {
-                        selectedView.setBackground(context.getDrawable(R.drawable.box));
-                    }
-                    if(position+1<getItemCount()){
-
-                        MasterMindModel prevModel = masterMindModels.get(position);
-                        MasterMindModel currModel = masterMindModels.get(position+1);
-                        prevModel.setEnable(false);
-                        currModel.setEnable(true);
-                        ((MainActivity)context).updateItemView(position,prevModel,currModel);
-                        selectedPosition=position+1;
+                    if(checkColor()) {
+                        if (selectedView != null) {
+                            selectedView.setBackground(context.getDrawable(R.drawable.box));
+                        }
+                        if (position + 1 < getItemCount()) {
+                            MasterMindModel prevModel = masterMindModels.get(position);
+                            MasterMindModel currModel = masterMindModels.get(position + 1);
+                            prevModel.setEnable(false);
+                            currModel.setEnable(true);
+                            ((MainActivity) context).updateItemView(position, prevModel, currModel);
+                            selectedPosition = position + 1;
+                        } else {
+                            ((MainActivity) context).showTheColors();
+                        }
+                    } else {
+                        ((MainActivity) context).showWarningMessage();
                     }
                 }
             });
@@ -139,5 +144,17 @@ public class MasterMindAdapter extends RecyclerView.Adapter<MasterMindViewHolder
             }break;
         }
         masterMindModels.set(selectedPosition,masterMindModel);
+    }
+
+    public boolean checkColor(){
+        MasterMindModel masterMindModel= masterMindModels.get(selectedPosition);
+        if((masterMindModel.getInput_one() != R.drawable.ic_circle_grey) &&
+                (masterMindModel.getInput_two() != R.drawable.ic_circle_grey) &&
+        (masterMindModel.getInput_three() != R.drawable.ic_circle_grey) &&
+        (masterMindModel.getInput_four() != R.drawable.ic_circle_grey)){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

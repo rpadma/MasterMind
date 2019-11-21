@@ -3,8 +3,11 @@ package com.mandb.rohitpadma.mastermind;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.mandb.rohitpadma.mastermind.adapter.MasterMindAdapter;
 
@@ -17,6 +20,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -205,5 +210,59 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         masterMindModels.clear();
         colorPositions.clear();
         masterMindAdapter.notifyDataSetChanged();
+    }
+
+    public void showTheColors(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("You Lost - The Sequence is:");
+        builder.setView(setColors());
+        builder.setPositiveButton("Play Again", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                clearListView();
+                bindData();
+                colorPositions = generateRandomColors();
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                clearListView();
+                bindData();
+                colorPositions = generateRandomColors();
+              dialog.dismiss();
+            }
+        });
+
+
+
+
+        AlertDialog dialog= builder.create();
+        dialog.show();
+    }
+
+    public View setColors(){
+        LinearLayout linearLayout2 = new LinearLayout(this);
+        linearLayout2.setLayoutParams(new LinearLayout.LayoutParams(
+                WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        linearLayout2.setOrientation(LinearLayout.HORIZONTAL);
+        linearLayout2.setGravity( Gravity.CENTER);
+
+        if(colorPositions.size()>0){
+            for(int i=0;i<colorPositions.size();i++){
+                ImageView imageView=new ImageView(this);
+                imageView.setImageResource(colorPositions.get(i));
+                imageView.setBackground(getDrawable(R.drawable.box));
+                imageView.setLayoutParams(new LinearLayout.LayoutParams(100,100));
+                linearLayout2.addView(imageView);
+            }
+        }
+        return linearLayout2.getRootView();
+    }
+
+    public void showWarningMessage(){
+        Toast.makeText(this,"Select all four color",Toast.LENGTH_SHORT).show();
     }
 }
