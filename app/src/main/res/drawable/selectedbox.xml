@@ -1,15 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke
-        android:width="4dp"
-        android:color="#000000" />
-    <solid
-        android:color="#00FFFFFF"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"/>
-    <padding
-        android:left="10dp"
-        android:top="10dp"
-        android:right="10dp"
-        android:bottom="10dp" />
-</shape>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="512dp"
+    android:height="512dp"
+    android:viewportWidth="497"
+    android:viewportHeight="497">
+    <path
+        android:pathData="m165.5,0h-45c-8.284,0 -15,6.716 -15,15s6.716,15 15,15h45c8.284,0 15,-6.716 15,-15s-6.716,-15 -15,-15z"
+        android:fillColor="#A25A5A"/>
+    <path
+        android:pathData="m271,0h-45c-8.284,0 -15,6.716 -15,15s6.716,15 15,15h45c8.284,0 15,-6.716 15,-15s-6.716,-15 -15,-15z"
+        android:fillColor="#A25A5A"/>
+    <path
+        android:pathData="m376.5,0h-45c-8.284,0 -15,6.716 -15,15s6.716,15 15,15h45c8.284,0 15,-6.716 15,-15s-6.716,-15 -15,-15z"
+        android:fillColor="#A25A5A"/>
+    <path
+        android:pathData="m165.5,467h-45c-8.284,0 -15,6.716 -15,15s6.716,15 15,15h45c8.284,0 15,-6.716 15,-15s-6.716,-15 -15,-15z"
+        android:fillColor="#A25A5A"/>
+    <path
+        android:pathData="m271,467h-45c-8.284,0 -15,6.716 -15,15s6.716,15 15,15h45c8.284,0 15,-6.716 15,-15s-6.716,-15 -15,-15z"
+        android:fillColor="#A25A5A"/>
+    <path
+        android:pathData="m376.5,467h-45c-8.284,0 -15,6.716 -15,15s6.716,15 15,15h45c8.284,0 15,-6.716 15,-15s-6.716,-15 -15,-15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m482,422c-8.284,0 -15,6.716 -15,15v30l-15,30h30c8.284,0 15,-6.716 15,-15v-45c0,-8.284 -6.716,-15 -15,-15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m467,482v-15h-30c-8.284,0 -15,6.716 -15,15s6.716,15 15,15h15c8.284,0 15,-6.716 15,-15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m467,331.5v45c0,8.284 6.716,15 15,15s15,-6.716 15,-15v-45c0,-8.284 -6.716,-15 -15,-15s-15,6.716 -15,15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m467,120.5v45c0,8.284 6.716,15 15,15s15,-6.716 15,-15v-45c0,-8.284 -6.716,-15 -15,-15s-15,6.716 -15,15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m482,0h-30l15,30v30c0,8.284 6.716,15 15,15s15,-6.716 15,-15v-45c0,-8.284 -6.716,-15 -15,-15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m452,0h-15c-8.284,0 -15,6.716 -15,15s6.716,15 15,15h30v-15c0,-8.284 -6.716,-15 -15,-15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m15,422c8.284,0 15,6.716 15,15v30h30c8.284,0 15,6.716 15,15s-6.716,15 -15,15h-45c-8.284,0 -15,-6.716 -15,-15v-45c0,-8.284 6.716,-15 15,-15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m30,331.5v45c0,8.284 -6.716,15 -15,15s-15,-6.716 -15,-15v-45c0,-8.284 6.716,-15 15,-15s15,6.716 15,15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m30,226v45c0,8.284 -6.716,15 -15,15s-15,-6.716 -15,-15v-45c0,-8.284 6.716,-15 15,-15s15,6.716 15,15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m30,120.5v45c0,8.284 -6.716,15 -15,15s-15,-6.716 -15,-15v-45c0,-8.284 6.716,-15 15,-15s15,6.716 15,15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m15,0h45c8.284,0 15,6.716 15,15s-6.716,15 -15,15h-30v30c0,8.284 -6.716,15 -15,15s-15,-6.716 -15,-15v-45c0,-8.284 6.716,-15 15,-15z"
+        android:fillColor="@color/selectBoxColor"/>
+    <path
+        android:pathData="m467,226v45c0,8.284 6.716,15 15,15s15,-6.716 15,-15v-45c0,-8.284 -6.716,-15 -15,-15s-15,6.716 -15,15z"
+        android:fillColor="@color/selectBoxColor"/>
+</vector>

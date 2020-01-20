@@ -4,6 +4,7 @@
     android:id="@+id/stepLayout"
     android:clickable="false"
     android:orientation="vertical"
+    android:background="@color/colorBackGround"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
@@ -11,6 +12,7 @@
         android:id="@+id/control"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:background="@color/colorBackGround"
         android:src="@drawable/ic_done_tick"
         android:padding="4dp"
         android:visibility="invisible"
@@ -83,6 +85,7 @@
             android:id="@+id/clue1"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/colorBackGround"
             android:src="@drawable/ic_circle_grey"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -94,6 +97,7 @@
             android:id="@+id/clue2"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/colorBackGround"
             android:src="@drawable/ic_circle_grey"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,6 +111,7 @@
             android:id="@+id/clue3"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/colorBackGround"
             android:src="@drawable/ic_circle_grey"
             app:layout_constraintTop_toBottomOf="@+id/clue1"
             app:layout_constraintStart_toStartOf="parent"
@@ -120,6 +125,7 @@
             android:id="@+id/clue4"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/colorBackGround"
             android:src="@drawable/ic_circle_grey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clue2"
@@ -131,8 +137,5 @@
             app:layout_constraintHeight_percent=".45" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
